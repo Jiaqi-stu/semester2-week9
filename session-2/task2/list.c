@@ -63,15 +63,21 @@ Data *delete( List *list, int loc ) {
     Data *new = NULL;
     
     // check for empty List
-
+    if(list->length <= 0){
+        return NULL;
+    }
     // check for invalid loc
-
+    if(loc<0 || loc > list->length){
+        return NULL;
+    }
     // extract Data item
-    
+    new = list->data[loc];
     // shuffle list down to remove the gap
-
+    for(int i = loc; i < list->length -1; i++){
+    list->data[i] = list->data[i+1];
+    }
     // decrease list length
-
+    list->length--;
     return new;
 }
 
